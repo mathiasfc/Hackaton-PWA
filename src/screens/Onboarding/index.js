@@ -38,9 +38,9 @@ const Onboarding = () => {
         </div>
       </ReactSwipe>
       <styles.dots className="dots">
-        <span></span>
-        <span></span>
-        <span></span>
+        <styles.dot />
+        <styles.dot />
+        <styles.dot />
       </styles.dots >
       {/* <button onClick={() => reactSwipeEl.next()}>Next</button>
       <button onClick={() => reactSwipeEl.prev()}>Previous</button> */}

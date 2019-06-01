@@ -17,10 +17,9 @@ export const innerText = styled.span`
 
 export const dots = styled.div`
   position: absolute;
-  border: 2px solid red;
   width: 100%;
   height: auto;
-  bottom: 15px;
+  bottom: 15%;
   text-align: center;
   span {
     background: grey;
@@ -30,4 +29,13 @@ export const dots = styled.div`
     margin: 10px;
     display: inline-table;
   }
+`;
+
+export const dot = styled.span`
+  background: grey;
+  border-radius: 10px;
+  width: 15px;
+  height: 15px;
+  margin: 10px;
+  display: inline-table;
 `;
