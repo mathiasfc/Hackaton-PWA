@@ -35,6 +35,6 @@ export const Footer = styled.div`
 `;
 
 export const buttonStyle = css`
-  height: 125px;
-  width: 125px;
+  height: 100px;
+  width: 50px;
 `;

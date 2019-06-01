@@ -1,22 +1,43 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as styles from './style';
 import ReactSwipe from 'react-swipe';
+import Button from '../../components/Button';
 
 const Onboarding = () => {
+  // const [selected, setSelected] = useState(0);
+
+  const dotStyle = {
+    background: 'grey',
+    borderRadius: '10px',
+    width: '15px',
+    height: '15px',
+    margin: '10px',
+    display: 'inline-table',
+  };
   useEffect(() => {
-    console.log('scan tab didmount');
-    // if(!props.voucher.cameraAccess) {
-    //   props.show();
-    // }
-    //se não tiver premissão para acessar a camera
-    //pedir para digitar
+    console.log('mounted');
+    //set token entered
   }, []);
+
+  const next = reactSwipeEl => {
+    if (reactSwipeEl.getPos() < 2) {
+      reactSwipeEl.next();
+    } else {
+      console.log('vai para proxima pagina');
+    }
+  };
+
+  let selected = 0;
+
   let reactSwipeEl;
   return (
     <div>
       <ReactSwipe
         className="carousel"
-        swipeOptions={{ continuous: false }}
+        swipeOptions={{
+          continuous: false,
+          transitionEnd: () => (selected = reactSwipeEl.getPos()),
+        }}
         ref={el => (reactSwipeEl = el)}
       >
         <div>
@@ -28,7 +49,10 @@ const Onboarding = () => {
         </div>
         <div>
           <styles.fullPage>
-            <styles.innerText>Pague sua comanda <br />de forma rápida <br />e evite filas</styles.innerText>
+            <styles.innerText>
+              Pague sua comanda <br />
+              de forma rápida <br />e evite filas
+            </styles.innerText>
           </styles.fullPage>
         </div>
         <div>
@@ -38,12 +62,15 @@ const Onboarding = () => {
         </div>
       </ReactSwipe>
       <styles.dots className="dots">
-        <styles.dot />
-        <styles.dot />
-        <styles.dot />
-      </styles.dots >
-      {/* <button onClick={() => reactSwipeEl.next()}>Next</button>
-      <button onClick={() => reactSwipeEl.prev()}>Previous</button> */}
+        <styles.dot onClick={() => reactSwipeEl.slide(0)} selected={selected === 0} />
+        <styles.dot onClick={() => reactSwipeEl.slide(1)} selected={selected === 1} />
+        <styles.dot onClick={() => reactSwipeEl.slide(2)} selected={selected === 2} />
+      </styles.dots>
+      <styles.centeredButton>
+        <Button onClick={() => next(reactSwipeEl)} rounded customStyles={styles.buttonStyle}>
+          Próximo
+        </Button>
+      </styles.centeredButton>
     </div>
   );
 };
