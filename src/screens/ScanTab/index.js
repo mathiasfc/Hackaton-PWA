@@ -19,13 +19,13 @@ const ScanTab = props => {
 
   return (
     <div>
-      A
+      teste
       {/* <Scanner /> */}
     </div>
   );
 };
 
-export const ScanTab;
+export default ScanTab;
 // const mapStateToProps = state => ({
 //   auth: state.auth,
 // });
