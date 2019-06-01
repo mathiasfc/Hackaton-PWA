@@ -1,23 +1,22 @@
 import React from 'react';
 import * as styles from './style';
 
-const ProductList = () => (
+const ProductList = ({ data }) => (
   <styles.ProductList>
-    <styles.Header>
-      <styles.Title>Total</styles.Title>
-      <styles.PriceContainer>
-        <styles.TotalPrice>R$ 68,90</styles.TotalPrice>
-        <styles.PartialPrice>R$ 30,90</styles.PartialPrice>
-      </styles.PriceContainer>
-    </styles.Header>
+    <styles.Container>
+      <styles.Title>Itens</styles.Title>
 
-    <styles.Item>
-      <styles.ProductNameContainer>
-        <styles.ProductQuantity>4x</styles.ProductQuantity>
-        <styles.ProductName>Heineken</styles.ProductName>
-      </styles.ProductNameContainer>
-      <styles.Price>R$ 32,00</styles.Price>
-    </styles.Item>
+      {data.orderItems &&
+        data.orderItems.map(item => (
+          <styles.Item>
+            <styles.ProductNameContainer>
+              <styles.ProductQuantity>{item.quantity}x</styles.ProductQuantity>
+              <styles.ProductName>{item.title}</styles.ProductName>
+            </styles.ProductNameContainer>
+            <styles.Price>{item.total}</styles.Price>
+          </styles.Item>
+        ))}
+    </styles.Container>
   </styles.ProductList>
 );
 
