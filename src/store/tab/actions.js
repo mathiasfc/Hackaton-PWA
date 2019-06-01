@@ -11,6 +11,16 @@ export const receiveTab = payload => ({
   payload,
 });
 
+export const CANCEL_CAMERA_ACCESS = 'CANCEL_CAMERA_ACCESS';
+export const cancelCameraAccess = () => {
+  return { type: CANCEL_CAMERA_ACCESS };
+}
+
+export const ACTIVATE_CAMERA = 'ACTIVATE_CAMERA';
+export const activateCamera = () => {
+  return { type: ACTIVATE_CAMERA };
+}
+
 export const getTabDetails = id => {
   return async dispatch => {
     dispatch(loadingTab());
