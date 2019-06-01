@@ -23,6 +23,7 @@ export const dots = styled.div`
   bottom: 15px;
   text-align: center;
   span {
+    background: grey;
     border-radius: 10px;
     width: 15px;
     height: 15px;
