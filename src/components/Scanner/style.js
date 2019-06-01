@@ -2,11 +2,7 @@ import styled from 'styled-components';
 import { container } from '../../styles/mixins';
 import QrReader from 'react-qr-reader';
 
-export const Container = styled.div`
-  ${container}
-  position: relative;
-  background: black;
-`;
+export const Container = styled.div``;
 
 export const ScannerWrapper = styled.div`
   position: relative;
@@ -14,7 +10,7 @@ export const ScannerWrapper = styled.div`
     width: 100%;
     max-width: 300px;
     height: 300px;
-    background: #FFF;
+    background: #fff;
     border-radius: 8px;
     &.active {
       width: 100%;
@@ -26,26 +22,26 @@ export const ScannerWrapper = styled.div`
   }
   &::before {
     display: block;
-    content: "";
+    content: '';
     width: 50px;
     height: 50px;
     position: absolute;
     top: -15px;
     left: -15px;
-    border-top: 3px solid #FFF;
-    border-left: 3px solid #FFF;
+    border-top: 3px solid #fff;
+    border-left: 3px solid #fff;
     border-radius: 8px 0px;
   }
   &::after {
     display: block;
-    content: "";
+    content: '';
     width: 50px;
     height: 50px;
     position: absolute;
     top: -15px;
     right: -15px;
-    border-top: 3px solid #FFF;
-    border-right: 3px solid #FFF;
+    border-top: 3px solid #fff;
+    border-right: 3px solid #fff;
     border-radius: 0px 8px;
   }
 `;
@@ -60,27 +56,27 @@ export const ScannerContainer = styled.div`
 export const BorderBottom = styled.span`
   &::before {
     display: block;
-    content: "";
+    content: '';
     width: 50px;
     height: 50px;
     position: absolute;
     bottom: -15px;
     left: -15px;
-    border-bottom: 3px solid #FFF;
-    border-left: 3px solid #FFF;
+    border-bottom: 3px solid #fff;
+    border-left: 3px solid #fff;
     border-radius: 0px 8px;
   }
 
   &::after {
     display: block;
-    content: "";
+    content: '';
     width: 50px;
     height: 50px;
     position: absolute;
     bottom: -15px;
     right: -15px;
-    border-bottom: 3px solid #FFF;
-    border-right: 3px solid #FFF;
+    border-bottom: 3px solid #fff;
+    border-right: 3px solid #fff;
     border-radius: 8px 0px;
   }
 `;
@@ -102,6 +98,7 @@ export const StyledQrReader = styled(QrReader)`
 `;
 
 export const Content = styled.div`
+  margin-top: 25%;
   position: absolute;
   z-index: 10;
   width: 100%;
@@ -117,7 +114,7 @@ export const Overlay = styled.div`
   top: 0;
   left: 0;
   right: 0;
-  background-color: rgba(0,0,0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
 `;
 
 export const ScanArea = styled.div`
@@ -137,7 +134,8 @@ export const ScanArea = styled.div`
   }
 
   @keyframes MoveUpDown {
-    0%, 100% {
+    0%,
+    100% {
       top: 0%;
     }
     50% {
