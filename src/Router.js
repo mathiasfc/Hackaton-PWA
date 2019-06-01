@@ -15,9 +15,13 @@ const ScanTab = loadable(() => import('./screens/ScanTab'), {
   fallback: <div>Loading ...</div>,
 });
 
+const Register = loadable(() => import('./screens/Register'), {
+  fallback: <div>Loading ...</div>,
+});
+
 const Router = () => (
   <>
-    <Route path="/" exact component={ScanTab} />
+    <Route path="/" exact component={Register} />
     <Route path="/list" component={List} />
   </>
 );
