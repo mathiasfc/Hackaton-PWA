@@ -8,7 +8,7 @@ const ProductList = ({ data }) => (
 
       {data.orderItems &&
         data.orderItems.map(item => (
-          <styles.Item>
+          <styles.Item key={item.id}>
             <styles.ProductNameContainer>
               <styles.ProductQuantity>{item.quantity}x</styles.ProductQuantity>
               <styles.ProductName>{item.title}</styles.ProductName>

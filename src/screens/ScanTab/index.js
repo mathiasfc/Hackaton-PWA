@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import Scanner from '../../components/Scanner';
-import * as styles from './style';
 import {
   loadingTab,
   receiveTab,
@@ -10,7 +10,14 @@ import {
   activateCamera,
 } from '../../store/tab/actions';
 
-const ScanTab = ({ tab, getTabDetails, cancelCameraAccess, activateCamera }) => {
+const onScan = async (id, history, getTabDetails) => {
+  if (id) {
+    await getTabDetails(id);
+    history.push('/list');
+  }
+};
+
+const ScanTab = ({ tab, cancelCameraAccess, activateCamera, history, getTabDetails }) => {
   useEffect(() => {
     console.log('scan tab didmount');
     // if(!props.voucher.cameraAccess) {
@@ -20,21 +27,15 @@ const ScanTab = ({ tab, getTabDetails, cancelCameraAccess, activateCamera }) => 
     //pedir para digitar
   }, []);
 
-  const onScan = id => {
-    if (id) alert(id);
-  };
-
   return (
-    <div>
-      <Scanner
-        title="Scan Voucher"
-        subtitle="Escaneie o voucher para utilizá-lo."
-        onScan={onScan}
-        cameraAccess={tab.cameraAccess}
-        cancelCameraAccess={cancelCameraAccess}
-        activateCamera={activateCamera}
-      />
-    </div>
+    <Scanner
+      title="Scan Voucher"
+      subtitle="Escaneie o voucher para utilizá-lo."
+      onScan={id => onScan(id, history, getTabDetails)}
+      cameraAccess={tab.cameraAccess}
+      cancelCameraAccess={cancelCameraAccess}
+      activateCamera={activateCamera}
+    />
   );
 };
 
@@ -50,7 +51,9 @@ const mapDispatchToProps = dispatch => ({
   activateCamera: () => dispatch(activateCamera()),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ScanTab);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ScanTab)
+);

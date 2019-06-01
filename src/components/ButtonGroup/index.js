@@ -5,35 +5,35 @@ import Button from '../Button';
 const ButtonGroup = () => (
   <styles.Container>
     <styles.ButtonContainer>
-      <Button square customStyles={styles.buttonStyle}>
+      <Button to="/" square="true" customStyles={styles.buttonStyle}>
         <span>Icon</span>
         Pagar Comanda
       </Button>
     </styles.ButtonContainer>
 
     <styles.ButtonContainer>
-      <Button square customStyles={styles.buttonStyle}>
+      <Button to="/" square="true" customStyles={styles.buttonStyle}>
         <span>Icon</span>
         Pagar Comanda
       </Button>
     </styles.ButtonContainer>
 
     <styles.ButtonContainer>
-      <Button square customStyles={styles.buttonStyle}>
+      <Button to="/" square="true" customStyles={styles.buttonStyle}>
         <span>Icon</span>
         Pagar Comanda
       </Button>
     </styles.ButtonContainer>
 
     <styles.ButtonContainer>
-      <Button square customStyles={styles.buttonStyle}>
+      <Button to="/" square="true" customStyles={styles.buttonStyle}>
         <span>Icon</span>
         Pagar Comanda
       </Button>
     </styles.ButtonContainer>
 
     <styles.ButtonContainer>
-      <Button square customStyles={styles.buttonStyle}>
+      <Button to="/" square="true" customStyles={styles.buttonStyle}>
         <span>Icon</span>
         Pagar Comanda
       </Button>
