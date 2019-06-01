@@ -17,8 +17,9 @@ const ScanTab = loadable(() => import('./screens/ScanTab'), {
 
 const Router = () => (
   <>
-    <Route path="/" exact component={ScanTab} />
+    <Route path="/" exact component={Home} />
     <Route path="/list" component={List} />
+    <Route path="/scan" component={ScanTab} />
   </>
 );
 
