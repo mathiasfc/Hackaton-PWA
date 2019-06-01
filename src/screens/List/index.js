@@ -46,7 +46,6 @@ const List = ({ tab, getTabDetails }) => {
 
 const mapStateToProps = state => {
   const { tab } = state;
-  console.log(state);
 
   return {
     tab: tab.tab,

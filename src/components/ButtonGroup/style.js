@@ -24,7 +24,7 @@ export const ButtonContainer = styled.div`
   }
 `;
 
-export const buttonStyle = css`
-  height: 125px;
-  width: 125px;
-`;
+export const buttonStyle = {
+  height: 125,
+  width: 125,
+};
