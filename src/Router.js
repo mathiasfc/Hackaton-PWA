@@ -21,8 +21,10 @@ const Register = loadable(() => import('./screens/Register'), {
 
 const Router = () => (
   <>
-    <Route path="/" exact component={Register} />
+    <Route path="/" exact component={Home} />
     <Route path="/list" component={List} />
+    <Route path="/scan" component={ScanTab} />
+    <Route path="/register" component={Register} />
   </>
 );
 

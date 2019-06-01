@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
 // import IconScan from '../Icons/Scan';
 import * as styles from './style';
 // import Navbar from '../Navbar';
 // import Header from '../Header';
 
-const ScannerComponent = (props) => {
-  const onError = (err) => {
-    if(props.cameraAccess) {
-      props.history.push('/digit_code');
-      props.cancelCameraAccess();
-    }
-  }
-  const { onScan, activateCamera } = props;
+const ScannerComponent = ({ onScan, activateCamera }) => {
+  const onError = err => {
+    // if(props.cameraAccess) {
+    //   props.history.push('/digit_code');
+    //   props.cancelCameraAccess();
+    // }
+    console.log(err);
+  };
+
   return (
     <div>
       <styles.Container>
@@ -31,14 +31,12 @@ const ScannerComponent = (props) => {
             </styles.ScannerWrapper>
           </styles.ScannerContainer>
         </styles.Content>
-        {/* {!props.hasModalOpen && (
-          <StyledQrReader
-            delay={500}
-            onScan={onScan}
-            onError={(err) => onError(err)}
-            onLoad={activateCamera}
-          />
-        )} */}
+        <styles.StyledQrReader
+          delay={500}
+          onScan={onScan}
+          onError={onError}
+          onLoad={() => activateCamera}
+        />
       </styles.Container>
       <styles.Overlay />
     </div>
@@ -51,4 +49,4 @@ ScannerComponent.propTypes = {
   cancelCameraAccess: PropTypes.func,
 };
 
-export default withRouter(ScannerComponent);
+export default ScannerComponent;
