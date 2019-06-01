@@ -1,35 +1,40 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const AppContainer = styled.div`
-  text-align: center;
-`;
-
-export const LogoApp = styled.img`
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-
-  @keyframes App-logo-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-`;
-
-export const Header = styled.header`
-  background-color: #282c34;
-  min-height: 100vh;
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  height: 100vh;
+  padding: 20px;
+`;
 
-  .App-link {
-    color: #61dafb;
-  }
+export const Header = styled.div`
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Content = styled.div``;
+
+export const TabNumberTitle = styled.div`
+  color: #b7b7b7;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
+`;
+
+export const TabNumber = styled.h3`
+  color: #000;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 33px;
+`;
+
+export const Footer = styled.div`
+  display: flex;
+`;
+
+export const buttonStyle = css`
+  height: 125px;
+  width: 125px;
 `;
