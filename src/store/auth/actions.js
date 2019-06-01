@@ -20,14 +20,18 @@ export function login(data) {
   return async dispatch => {
     dispatch(loadingLogin());
     const AuthService = new Auth();
+
     try {
       const responseStart = await AuthService.loginStart(data.identifier);
+      dispatch(loginSuccess());
+
       console.log('login_start_OK', responseStart);
       if (responseStart && responseStart.data) {
         const responseComplete = await AuthService.loginComplete({
           loginToken: responseStart.data.loginToken,
           password: data.password,
         });
+
         console.log('login_complete_OK', responseComplete);
         if (responseComplete.data && responseComplete.data.sessionToken) {
           afterLogin(responseComplete.data.sessionToken);

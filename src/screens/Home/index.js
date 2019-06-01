@@ -6,9 +6,11 @@ import logo from '../../images/logo.svg';
 import * as styles from './style';
 import { login } from '../../store/auth/actions';
 import { createCard, listCards } from '../../store/paymentMethod/actions';
+import { getTabDetails } from '../../store/tab/actions';
 
 function App(props) {
   useEffect(() => {
+    props.login({ identifier: 'vinicius.flores@4all.com', password: '$enh@4all' });
     /* props.login({ identifier: 'EmailOuTelefone', password: 'Senha' }); */
     /* props.createCard({
       type: 1,
@@ -18,6 +20,7 @@ function App(props) {
       securityCode: '817',
     }); */
     /* props.listCards(); */
+    props.getTabDetails(51);
   }, []);
   return (
     <styles.AppContainer>
@@ -38,8 +41,7 @@ const mapStateToProps = state => ({
   auth: state.auth,
 });
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators({ login, createCard, listCards }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ login, getTabDetails }, dispatch);
 
 export default connect(
   mapStateToProps,

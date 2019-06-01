@@ -9,3 +9,5 @@ export const BRANDS = {
   JCB: 8,
   HIPERCARD: 9,
 };
+
+export const ID_UNITY = 2802;
