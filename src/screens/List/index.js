@@ -1,22 +1,26 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import logo from '../../images/logo.svg';
 import * as styles from './style';
+import ProductList from '../../components/ProductList';
+import Button from '../../components/Button';
 
-function List() {
-  return (
-    <styles.AppContainer>
-      <styles.Header className="App-header">
-        <styles.LogoApp src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Link className="App-link" to="/">
-          Ir Para Home
-        </Link>
-      </styles.Header>
-    </styles.AppContainer>
-  );
-}
+const List = () => (
+  <styles.Container>
+    <styles.Header>
+      <styles.TabNumberTitle>Comanda</styles.TabNumberTitle>
+      <styles.TabNumber>190989</styles.TabNumber>
+    </styles.Header>
+
+    <styles.Content>
+      <ProductList />
+    </styles.Content>
+
+    <styles.Footer>
+      <Button rounded customStyles={styles.buttonStyle}>
+        <span>Icon</span>
+        Pagar Comanda
+      </Button>
+    </styles.Footer>
+  </styles.Container>
+);
 
 export default List;
