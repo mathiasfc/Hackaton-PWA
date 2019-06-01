@@ -9,18 +9,29 @@ import { login } from '../../store/auth/actions';
 import { createCard, listCards } from '../../store/paymentMethod/actions';
 
 const ScanTab = props => {
-  // useEffect(() => {
-  //   console.log('scan tab didmount');
-  // }, []);
+  useEffect(() => {
+    console.log('scan tab didmount');
+    // if(!props.voucher.cameraAccess) {
+    //   props.show();
+    // }
+  }, []);
 
-  // const onScan = id => {
-  //   if (id) this.props.getVoucher(id);
-  // };
+   const onScan = id => {
+     if (id) this.props.getVoucher(id);
+   };
 
   return (
     <div>
       teste
-      {/* <Scanner /> */}
+      <Scanner
+        title="Scan Voucher"
+        subtitle="Escaneie o voucher para utilizá-lo."
+        // onScan={this.onScan}
+        // hasModalOpen={false}
+        // cameraAccess={voucher.cameraAccess}
+        // cancelCameraAccess={cancelCameraAccess}
+        // activateCamera={false}
+      />
     </div>
   );
 };
