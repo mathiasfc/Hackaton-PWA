@@ -5,7 +5,7 @@ import withNetworkListener from './containers/NetworkListener';
 /* import Home from './screens/App';
 import List from './screens/List'; */
 
-const Home = loadable(() => import('./screens/Home'), {
+const HomePage = loadable(() => import('./screens/HomePage'), {
   fallback: <div>Loading ...</div>,
 });
 const List = loadable(() => import('./screens/List'), {
@@ -17,7 +17,7 @@ const ScanTab = loadable(() => import('./screens/ScanTab'), {
 
 const Router = () => (
   <>
-    <Route path="/" exact component={Home} />
+    <Route path="/" exact component={HomePage} />
     <Route path="/list" component={List} />
     <Route path="/scan" component={ScanTab} />
   </>
