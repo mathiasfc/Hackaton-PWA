@@ -70,6 +70,11 @@ export const PriceItemTitle = styled.div`
   line-height: 22px;
 `;
 
+<<<<<<< HEAD
+export const buttonStyle = css`
+  height: 100px;
+  width: 50px;
+=======
 export const PriceItemValue = styled.div`
   ${({ big }) => css`
     color: ${big ? '#4ea547' : '#b7b7b7'};
@@ -77,4 +82,5 @@ export const PriceItemValue = styled.div`
     font-weight: ${big ? '700' : '600'};
     line-height: ${big ? '36' : '22'}px;
   `}
+>>>>>>> master
 `;
