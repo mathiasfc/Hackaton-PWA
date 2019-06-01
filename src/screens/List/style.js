@@ -10,7 +10,7 @@ export const Container = styled.div`
 export const Header = styled.div`
   align-items: flex-end;
   background-color: #ffffff;
-  box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
   padding: 20px 20px 15px;
