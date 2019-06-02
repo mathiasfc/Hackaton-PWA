@@ -14,6 +14,7 @@ const Onboarding = () => {
     margin: '10px',
     display: 'inline-table',
   };
+
   useEffect(() => {
     console.log('mounted');
     //set token entered

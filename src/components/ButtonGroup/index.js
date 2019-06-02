@@ -1,41 +1,45 @@
 import React from 'react';
 import * as styles from './style';
 import Button from '../Button';
+import QRCodeIcon from '../Icons/QRCode';
+import ProfileIcon from '../Icons/Profile';
+import CardIcon from '../Icons/Card';
+import QuestionIcon from '../Icons/Question';
 
-const ButtonGroup = () => (
+const ButtonGroup = ({ read }) => (
   <styles.Container>
     <styles.ButtonContainer>
+      {read ? (
+        <Button to="/scan" square="true" customStyles={styles.buttonStyle}>
+          <QRCodeIcon />
+          Leia sua Comanda
+        </Button>
+      ) : (
+        <Button to="/" square="true" customStyles={styles.buttonStyle}>
+          <QRCodeIcon />
+          Pagar a Comanda
+        </Button>
+      )}
+    </styles.ButtonContainer>
+
+    <styles.ButtonContainer>
       <Button to="/" square="true" customStyles={styles.buttonStyle}>
-        <span>Icon</span>
-        Pagar Comanda
+        <ProfileIcon />
+        Minha Conta
       </Button>
     </styles.ButtonContainer>
 
     <styles.ButtonContainer>
       <Button to="/" square="true" customStyles={styles.buttonStyle}>
-        <span>Icon</span>
-        Pagar Comanda
+        <CardIcon />
+        Meus Cartões
       </Button>
     </styles.ButtonContainer>
 
     <styles.ButtonContainer>
       <Button to="/" square="true" customStyles={styles.buttonStyle}>
-        <span>Icon</span>
-        Pagar Comanda
-      </Button>
-    </styles.ButtonContainer>
-
-    <styles.ButtonContainer>
-      <Button to="/" square="true" customStyles={styles.buttonStyle}>
-        <span>Icon</span>
-        Pagar Comanda
-      </Button>
-    </styles.ButtonContainer>
-
-    <styles.ButtonContainer>
-      <Button to="/" square="true" customStyles={styles.buttonStyle}>
-        <span>Icon</span>
-        Pagar Comanda
+        <QuestionIcon />
+        FAQ
       </Button>
     </styles.ButtonContainer>
   </styles.Container>

@@ -67,7 +67,7 @@ export const Price = styled.div`
 `;
 
 export const Container = styled.div`
-  height: calc(100vh - 322px);
+  height: calc(100vh - 317px);
   overflow-y: auto;
   padding: 0 20px;
 `;
