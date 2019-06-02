@@ -62,6 +62,7 @@ export function createCard(data) {
           const respComplete = await CardService.addCard(respPrepareCard.data.cardNonce);
           if (respComplete && respComplete.data) {
             console.log('Card Added With Success', respComplete);
+            return true;
           }
         }
       }
