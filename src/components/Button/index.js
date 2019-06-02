@@ -10,6 +10,7 @@ const Button = ({ as, children, onClick, customStyles, square, rounded, to, disa
     customStyles={customStyles}
     onClick={onClick}
     disabled={disabled}
+    type="button"
   >
     {children}
   </styles.Button>

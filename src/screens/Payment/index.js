@@ -1,12 +1,13 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import * as styles from './style';
 import Button from '../../components/Button';
 import BackIcon from '../../components/Icons/Back';
 
-const Payment = () => (
+const Payment = ({ history }) => (
   <styles.Container>
     <styles.Header>
-      <BackIcon />
+      <BackIcon onClick={() => history.push('/')} />
       <styles.HeaderTitle>Pagamento realizado com sucesso!</styles.HeaderTitle>
     </styles.Header>
 
@@ -23,8 +24,10 @@ const Payment = () => (
       </styles.CommentContainer>
     </styles.Content>
 
-    <Button rounded>Fechar</Button>
+    <Button rounded as="button" onClick={() => history.push('/')}>
+      Fechar
+    </Button>
   </styles.Container>
 );
 
-export default Payment;
+export default withRouter(Payment);

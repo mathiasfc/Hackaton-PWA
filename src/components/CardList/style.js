@@ -32,6 +32,10 @@ export const CardBrand = styled.div`
   width: 40px;
 `;
 
+export const CardBrandImage = styled.img`
+  display: block;
+`;
+
 export const CardNumber = styled.div`
   color: #2c2c2c;
   font-size: 14px;

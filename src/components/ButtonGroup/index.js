@@ -15,7 +15,7 @@ const ButtonGroup = ({ read }) => (
           Leia sua Comanda
         </Button>
       ) : (
-        <Button to="/" square="true" customStyles={styles.buttonStyle}>
+        <Button to="/paytab" square="true" customStyles={styles.buttonStyle}>
           <QRCodeIcon />
           Pagar a Comanda
         </Button>

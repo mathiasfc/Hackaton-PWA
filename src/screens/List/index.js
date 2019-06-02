@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import ProductList from '../../components/ProductList';
 import ButtonGroup from '../../components/ButtonGroup';
 import * as styles from './style';
+import logo from '../../images/comanda-logo.png';
 
 const List = ({ tab }) => (
   <styles.Container>
     <styles.Header>
       <styles.LogoContainer>
-        <styles.Logo />
+        <styles.Logo src={logo} />
 
         <styles.TabContainer>
           <styles.TabNumberTitle>Comanda</styles.TabNumberTitle>

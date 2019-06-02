@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import * as styles from './style';
 import Header from '../Header';
 import Button from '../../components/Button';
@@ -37,11 +38,7 @@ const ScannerComponent = ({ history, onScan, activateCamera }) => {
           onError={onError}
           onLoad={() => activateCamera}
         />
-        <Button
-          onClick={() => history.push('/typetab')}
-          rounded
-          customStyles={styles.buttonStyle}
-        >
+        <Button onClick={() => history.push('/typetab')} rounded customStyles={styles.buttonStyle}>
           Digitar comanda
         </Button>
       </styles.Container>
@@ -56,4 +53,4 @@ ScannerComponent.propTypes = {
   cancelCameraAccess: PropTypes.func,
 };
 
-export default ScannerComponent;
+export default withRouter(ScannerComponent);

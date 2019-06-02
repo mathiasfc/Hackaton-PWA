@@ -9,7 +9,9 @@ const CardList = ({ cards, onClick }) => {
         cards.map(card => (
           <styles.CardItem key={card.cardId} onClick={() => onClick(card.cardId)}>
             <styles.CardInfo>
-              <styles.CardBrand>{card.brandLogoUrl}</styles.CardBrand>
+              <styles.CardBrand>
+                <styles.CardBrandImage src={`${card.brandLogoUrl}.png`} />
+              </styles.CardBrand>
               <styles.CardNumber>{card.lastDigits}</styles.CardNumber>
             </styles.CardInfo>
 

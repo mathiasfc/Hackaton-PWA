@@ -33,16 +33,17 @@ export const TabNumber = styled.h3`
 `;
 
 export const LogoContainer = styled.div`
+  align-items: center;
   display: flex;
   justify-content: space-between;
   margin-bottom: 40px;
   width: 100%;
 `;
 
-export const Logo = styled.div`
-  background-color: #ccc;
-  height: 50px;
-  width: 117px;
+export const Logo = styled.img`
+  display: block;
+  height: 49px;
+  width: 111px;
 `;
 
 export const TabContainer = styled.div`

@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import * as styles from './style';
 import Button from '../../components/Button';
 import BackIcon from '../../components/Icons/Back';
 import CardList from '../../components/CardList';
 import { listCards } from '../../store/paymentMethod/actions';
 import Order from '../../service/Order';
+import Storage from '../../helpers/storage';
 
 class PayTabPage extends Component {
   state = {
@@ -52,26 +54,33 @@ class PayTabPage extends Component {
     }));
   };
 
-  pay = paymentMode => {
-    const { tabId } = this.props;
+  pay = async () => {
+    const { tab, history } = this.props;
     const { cards } = this.state;
     const selectedCard = cards.find(card => card.selected);
     const OrderService = new Order();
+    const sessionToken = Storage.getLocalStorage('sessionToken');
 
-    OrderService.payTab(tabId, {
+    const response = await OrderService.payTab(tab.tab.id, {
+      sessionToken,
       cardId: selectedCard.cardId,
-      paymentMode,
+      paymentMode: 1,
     });
+
+    console.log(response);
+
+    history.push('/payment');
   };
 
   render() {
+    const { history, tab } = this.props;
     const { cards } = this.state;
     const hasSelected = cards.filter(card => card.selected).length > 0;
 
     return (
       <styles.Container>
         <styles.Header>
-          <BackIcon />
+          <BackIcon onClick={() => history.push('/list')} />
 
           <styles.HeaderTitle>Pagamento</styles.HeaderTitle>
           <styles.SubHeaderDate>1 jun 2019</styles.SubHeaderDate>
@@ -79,12 +88,12 @@ class PayTabPage extends Component {
           <styles.TabInfo>
             <styles.TabInfoNumber>
               <styles.TabInfoHeader>Comanda</styles.TabInfoHeader>
-              <styles.TabNumber>#271823</styles.TabNumber>
+              <styles.TabNumber>#{tab.id}</styles.TabNumber>
             </styles.TabInfoNumber>
 
             <styles.TabInfoPrice>
               <styles.TabInfoHeader>Total</styles.TabInfoHeader>
-              <styles.TabPrice>R$ 55,00</styles.TabPrice>
+              <styles.TabPrice>{tab.total}</styles.TabPrice>
             </styles.TabInfoPrice>
           </styles.TabInfo>
         </styles.Header>
@@ -113,12 +122,14 @@ class PayTabPage extends Component {
 
 const mapStateToProps = ({ paymentMethod, tab }) => ({
   cards: paymentMethod.cards,
-  tabId: tab.tab.id,
+  tab,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({ listCards }, dispatch);
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PayTabPage);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(PayTabPage)
+);
