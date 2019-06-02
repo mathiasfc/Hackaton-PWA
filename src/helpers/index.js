@@ -32,3 +32,12 @@ export const afterLogin = sessionToken => {
   Storage.setLocalStorage('sessionType', 'ACCOUNT');
   /* window.location.href = window.Core.basename + 'select_merchant'; */
 };
+
+export const formatReal = int => {
+  var tmp = int + '';
+  tmp = tmp.replace(/([0-9]{2})$/g, ',$1');
+  if (tmp.length > 6) tmp = tmp.replace(/([0-9]{3}),([0-9]{2}$)/g, '.$1,$2');
+
+  if (!tmp) tmp = '0';
+  return 'R$ ' + tmp;
+};

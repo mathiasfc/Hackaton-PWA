@@ -10,6 +10,7 @@ import { listCards } from '../../store/paymentMethod/actions';
 import Order from '../../service/Order';
 import Storage from '../../helpers/storage';
 import { clearTab } from '../../store/tab/actions';
+import { formatReal } from '../../helpers/index';
 
 class PayTabPage extends Component {
   state = {
@@ -17,7 +18,10 @@ class PayTabPage extends Component {
   };
 
   async componentDidMount() {
-    const { listCards } = this.props;
+    const { tab, history, listCards } = this.props;
+    if (Object.entries(tab).length === 0) {
+      history.push('/');
+    }
 
     listCards();
   }
@@ -99,7 +103,7 @@ class PayTabPage extends Component {
 
             <styles.TabInfoPrice>
               <styles.TabInfoHeader>Total</styles.TabInfoHeader>
-              <styles.TabPrice>{tab.total}</styles.TabPrice>
+              <styles.TabPrice>{formatReal(tab.total)}</styles.TabPrice>
             </styles.TabInfoPrice>
           </styles.TabInfo>
         </styles.Header>
