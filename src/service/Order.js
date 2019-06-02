@@ -3,7 +3,7 @@ import { ID_UNITY } from '../helpers/constants';
 
 export default class {
   constructor(endpoint = process.env.REACT_APP_API_ORDERS) {
-    this.instance = axiosInstance(endpoint);
+    this.instance = axiosInstance(process.env.REACT_APP_API_ORDERS);
   }
 
   getOrderDetails(id) {
