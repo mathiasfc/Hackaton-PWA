@@ -17,8 +17,10 @@ const ScanTab = loadable(() => import('./screens/ScanTab'), {
 const Onboarding = loadable(() => import('./screens/Onboarding'), {
   fallback: <div>Loading ...</div>,
 });
-
 const Register = loadable(() => import('./screens/Register'), {
+  fallback: <div>Loading ...</div>,
+});
+const PayTabPage = loadable(() => import('./screens/PayTabPage'), {
   fallback: <div>Loading ...</div>,
 });
 
@@ -29,6 +31,7 @@ const Router = () => (
     <Route path="/scan" component={ScanTab} />
     <Route path="/onboarding" component={Onboarding} />
     <Route path="/register" component={Register} />
+    <Route path="/paytab" component={PayTabPage} />
   </>
 );
 
