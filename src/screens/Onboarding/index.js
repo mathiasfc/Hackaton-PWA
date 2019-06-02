@@ -1,36 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import * as styles from './style';
 import ReactSwipe from 'react-swipe';
+import { withRouter } from 'react-router-dom';
 import Button from '../../components/Button';
+import Storage from '../../helpers/storage';
 
-const Onboarding = () => {
+const Onboarding = ({ history }) => {
   // const [selected, setSelected] = useState(0);
 
-  const dotStyle = {
-    background: 'grey',
-    borderRadius: '10px',
-    width: '15px',
-    height: '15px',
-    margin: '10px',
-    display: 'inline-table',
-  };
-
   useEffect(() => {
-    console.log('mounted');
-    //set token entered
+    const viewOnboarding = Storage.getLocalStorage('viewOnboarding');
+    if (viewOnboarding) {
+      history.push('/');
+    }
+    Storage.setLocalStorage('viewOnboarding', 'true');
   }, []);
 
   const next = reactSwipeEl => {
     if (reactSwipeEl.getPos() < 2) {
       reactSwipeEl.next();
     } else {
-      console.log('vai para proxima pagina');
+      history.push('/home');
     }
   };
 
-  let selected = 0;
-
   let reactSwipeEl;
+  let selected;
+
   return (
     <div>
       <ReactSwipe
@@ -68,7 +64,12 @@ const Onboarding = () => {
         <styles.dot onClick={() => reactSwipeEl.slide(2)} selected={selected === 2} />
       </styles.dots>
       <styles.centeredButton>
-        <Button onClick={() => next(reactSwipeEl)} rounded customStyles={styles.buttonStyle}>
+        <Button
+          as="button"
+          onClick={() => next(reactSwipeEl)}
+          rounded
+          customStyles={styles.buttonStyle}
+        >
           Próximo
         </Button>
       </styles.centeredButton>
@@ -76,4 +77,4 @@ const Onboarding = () => {
   );
 };
 
-export default Onboarding;
+export default withRouter(Onboarding);

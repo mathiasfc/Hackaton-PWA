@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { bindActionCreators } from 'redux';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as styles from './style';
 import Button from '../../components/Button';
@@ -10,7 +11,10 @@ import Storage from '../../helpers/storage';
 
 const AccountDetails = props => {
   useEffect(() => {
-    console.log('mounted');
+    const sessionToken = Storage.getLocalStorage('sessionToken');
+    if (!sessionToken) {
+      props.history.push('/');
+    }
   }, []);
 
   const logout = () => {
@@ -53,4 +57,5 @@ const AccountDetails = props => {
     </div>
   );
 };
-export default AccountDetails;
+
+export default withRouter(AccountDetails);
