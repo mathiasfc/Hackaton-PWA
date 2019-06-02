@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import * as styles from './style';
 import Button from '../../components/Button';
-import backLogo from '../../images/back-icon.svg';
+import BackIcon from '../../components/Icons/Back';
 
 const PayTabPage = () => {
   // const [selected, setSelected] = useState(0);
@@ -15,39 +15,38 @@ const PayTabPage = () => {
     console.log('pagar comanda');
   };
   return (
-    <div>
-      <styles.Container>
-        <styles.BackLogo src={backLogo} className="App-logo" alt="logo" />
-        <styles.FlexColumn>
-          <div>
-            <styles.Header>Pagamento</styles.Header>
-            <styles.SubHeaderDate>1 jun 2019</styles.SubHeaderDate>
+    <styles.Container>
+      <BackIcon />
 
-            <styles.TabInfo>
-              <styles.TabInfoNumber>
-                <styles.TabInfoHeader>Comanda</styles.TabInfoHeader>
-                <styles.TabNumber>#271823</styles.TabNumber>
-              </styles.TabInfoNumber>
+      <styles.FlexColumn>
+        <div>
+          <styles.Header>Pagamento</styles.Header>
+          <styles.SubHeaderDate>1 jun 2019</styles.SubHeaderDate>
 
-              <styles.TabInfoPrice>
-                <styles.TabInfoHeader>Total</styles.TabInfoHeader>
-                <styles.TabPrice>R$ 55,00</styles.TabPrice>
-              </styles.TabInfoPrice>
-            </styles.TabInfo>
-          </div>
+          <styles.TabInfo>
+            <styles.TabInfoNumber>
+              <styles.TabInfoHeader>Comanda</styles.TabInfoHeader>
+              <styles.TabNumber>#271823</styles.TabNumber>
+            </styles.TabInfoNumber>
 
-          <div>
-            <styles.ChoicePayType>Escolha a forma de pagamento</styles.ChoicePayType>
-          </div>
+            <styles.TabInfoPrice>
+              <styles.TabInfoHeader>Total</styles.TabInfoHeader>
+              <styles.TabPrice>R$ 55,00</styles.TabPrice>
+            </styles.TabInfoPrice>
+          </styles.TabInfo>
+        </div>
 
-          {/* Cartoes de créditos */}
+        <div>
+          <styles.ChoicePayType>Escolha a forma de pagamento</styles.ChoicePayType>
+        </div>
 
-          <Button onClick={payTab} rounded customStyles={styles.buttonStyle}>
-            Pagar Comanda
-          </Button>
-        </styles.FlexColumn>
-      </styles.Container>
-    </div>
+        {/* Cartoes de créditos */}
+
+        <Button onClick={payTab} rounded customStyles={styles.buttonStyle}>
+          Pagar Comanda
+        </Button>
+      </styles.FlexColumn>
+    </styles.Container>
   );
 };
 

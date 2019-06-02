@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 export const Container = styled.div`
   height: 100vh;
   overflow-y: auto;
-  padding: 0 22px;
+  padding: 25px;
 `;
 
 export const FlexColumn = styled.div`
