@@ -27,8 +27,8 @@ export const getBrowser = () => {
   };
 };
 
-export const afterLogin = sessionToken => {
-  Storage.setLocalStorage('sessionToken', sessionToken);
-  Storage.setLocalStorage('sessionType', 'ACCOUNT');
+export const afterLogin = (sessionToken, origin = '') => {
+  Storage.setLocalStorage(`${origin}sessionToken`, sessionToken);
+  Storage.setLocalStorage(`${origin}sessionType`, 'ACCOUNT');
   /* window.location.href = window.Core.basename + 'select_merchant'; */
 };

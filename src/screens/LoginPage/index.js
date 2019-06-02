@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as styles from './style';
 import Button from '../../components/Button';
 import backLogo from '../../images/back-icon.svg';
-import { login } from '../../store/auth/actions';
+import { login, paylyLogin } from '../../store/auth/actions';
 import { getTabDetails } from '../../store/tab/actions';
 import Storage from '../../helpers/storage';
 
@@ -13,15 +13,30 @@ const LoginPage = props => {
   const [password, setPassword] = useState('');
 
   useEffect(() => {
+    const { location } = props;
+    console.log(location);
+    const origin = location.state ? location.state.origin : '';
+    console.log(origin);
     const sessionToken = Storage.getLocalStorage('sessionToken');
-    if (sessionToken) {
+    if (sessionToken && !origin) {
       props.history.push('/paytab');
     }
   });
 
   const login = async () => {
-    await props.login({ identifier: username, password: password });
-    const sessionToken = Storage.getLocalStorage('sessionToken');
+    const { location } = props;
+    console.log(location);
+    const origin = location.state ? location.state.origin : '';
+    console.log(origin);
+
+    if (origin) {
+      await props.paylyLogin({ identifier: username, password });
+    } else {
+      await props.login({ identifier: username, password });
+    }
+
+    const sessionToken = Storage.getLocalStorage(`${origin}sessionToken`);
+
     if (sessionToken) {
       props.history.push('/paytab');
     }
@@ -78,7 +93,8 @@ const mapStateToProps = state => ({
   auth: state.auth,
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators({ login, getTabDetails }, dispatch);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ login, paylyLogin, getTabDetails }, dispatch);
 
 export default connect(
   mapStateToProps,

@@ -15,6 +15,13 @@ class PayTabPage extends Component {
     cards: [],
   };
 
+  goToPaylyLogin = () => {
+    this.props.history.push({
+      pathname: '/login',
+      state: { origin: 'payly' },
+    });
+  };
+
   async componentDidMount() {
     const { listCards } = this.props;
 
@@ -36,6 +43,11 @@ class PayTabPage extends Component {
     const { cards } = this.props;
 
     if (!this.state.cards.length) {
+      cards.push({
+        cardId: 'payly',
+        selected: false,
+      });
+
       this.setState({
         cards: cards.map(card => ({
           ...card,
@@ -46,6 +58,13 @@ class PayTabPage extends Component {
   }
 
   onClick = id => {
+    if (id === 'payly') {
+      if (!Storage.getLocalStorage('paylysessionToken')) {
+        this.goToPaylyLogin();
+        return;
+      }
+    }
+
     this.setState(prevProps => ({
       cards: prevProps.cards.map(cards => ({
         ...cards,
@@ -55,17 +74,29 @@ class PayTabPage extends Component {
   };
 
   pay = async () => {
-    const { tab, history, dispatch } = this.props;
+    const { tab, history } = this.props;
     const { cards } = this.state;
     const selectedCard = cards.find(card => card.selected);
     const OrderService = new Order();
-    const sessionToken = Storage.getLocalStorage('sessionToken');
 
-    const response = await OrderService.payTab(tab.id, {
-      sessionToken,
-      cardId: selectedCard.cardId,
-      paymentMode: 1,
-    });
+    let response;
+
+    if (selectedCard.cardId === 'payly') {
+      const sessionToken = Storage.getLocalStorage('paylysessionToken');
+
+      response = await OrderService.payTab(tab.id, {
+        sessionToken,
+        paymentMode: 5,
+      });
+    } else {
+      const sessionToken = Storage.getLocalStorage('sessionToken');
+
+      response = await OrderService.payTab(tab.id, {
+        sessionToken,
+        cardId: selectedCard.cardId,
+        paymentMode: 1,
+      });
+    }
 
     console.log(response);
 
