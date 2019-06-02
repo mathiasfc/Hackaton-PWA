@@ -13,7 +13,7 @@ export const innerText = styled.span`
   font-weight: bold;
   width: 80%;
   text-align: center;
-  margin-top: -15%;
+  margin-top: 20%;
 `;
 
 export const dots = styled.div`
@@ -52,4 +52,15 @@ export const buttonStyle = css`
   height: 50px;
   width: 85%;
   font-weight: bold;
+`;
+
+export const onboardingImage = styled.img`
+  position: absolute;
+  width: 160px;
+  margin-top: -30%;
+  ${({ customSize }) =>
+    customSize &&
+    css`
+      width: 140px;
+    `}
 `;

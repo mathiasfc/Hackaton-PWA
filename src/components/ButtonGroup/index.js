@@ -31,7 +31,11 @@ const ButtonGroup = ({ cameraAccess, read }) => {
             Leia sua Comanda
           </Button>
         ) : (
-          <Button to="/paytab" square="true" customStyles={styles.buttonStyle}>
+          <Button
+            to={Storage.getLocalStorage('sessionToken') ? '/paytab' : '/login'}
+            square="true"
+            customStyles={styles.buttonStyle}
+          >
             <QRCodeIcon />
             Pagar a Comanda
           </Button>
@@ -47,14 +51,16 @@ const ButtonGroup = ({ cameraAccess, read }) => {
           <ProfileIcon />
           Minha Conta
         </Button>
-        ) : (
+      </styles.ButtonContainer>
+
+      <styles.ButtonContainer>
         <Button
-          to={Storage.getLocalStorage('sessionToken') ? '/paytab' : '/login'}
+          to={Storage.getLocalStorage('sessionToken') ? '/login' : '/cards'}
           square="true"
           customStyles={styles.buttonStyle}
         >
-          <QRCodeIcon />
-          Pagar a Comanda
+          <CardIcon />
+          Meus cartões
         </Button>
       </styles.ButtonContainer>
 

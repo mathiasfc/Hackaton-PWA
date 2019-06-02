@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import * as styles from './style';
+import onboarding1 from '../../images/onboarding-1.png';
+import onboarding2 from '../../images/onboarding-2.png';
+import onboarding3 from '../../images/onboarding-3.png';
 import ReactSwipe from 'react-swipe';
 import { withRouter } from 'react-router-dom';
 import Button from '../../components/Button';
@@ -39,6 +42,7 @@ const Onboarding = ({ history }) => {
       >
         <div>
           <styles.fullPage>
+          <styles.onboardingImage src={onboarding1} alt="onboardingImage" />
             <styles.innerText>
               Tenha controle sobre <br />o que você consumiu
             </styles.innerText>
@@ -46,6 +50,7 @@ const Onboarding = ({ history }) => {
         </div>
         <div>
           <styles.fullPage>
+          <styles.onboardingImage src={onboarding2} customSize  alt="onboardingImage" />
             <styles.innerText>
               Pague sua comanda <br />
               de forma rápida <br />e evite filas
@@ -54,6 +59,7 @@ const Onboarding = ({ history }) => {
         </div>
         <div>
           <styles.fullPage>
+          <styles.onboardingImage src={onboarding3}  alt="onboardingImage" />
             <styles.innerText>Divida o valor da comanda com outras pessoas</styles.innerText>
           </styles.fullPage>
         </div>
