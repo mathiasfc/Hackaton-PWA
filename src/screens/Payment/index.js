@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import * as styles from './style';
 import Button from '../../components/Button';
 import BackIcon from '../../components/Icons/Back';
+import { formatReal } from '../../helpers/index';
 
 const Payment = ({ history, location }) => (
   <styles.Container>
@@ -14,7 +15,9 @@ const Payment = ({ history, location }) => (
     <styles.Content>
       <styles.PaymentData>
         <styles.PaymentTitle>Valor Pago</styles.PaymentTitle>
-        <styles.PaymentValue>{location.state && location.state.total}</styles.PaymentValue>
+        <styles.PaymentValue>
+          {location.state && formatReal(location.state.total)}
+        </styles.PaymentValue>
       </styles.PaymentData>
 
       <styles.CommentContainer>

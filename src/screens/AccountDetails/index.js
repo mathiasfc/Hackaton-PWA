@@ -18,8 +18,8 @@ const AccountDetails = props => {
   }, []);
 
   const logout = () => {
-    Storage.setLocalStorage('sessionToken', '');
-    Storage.setLocalStorage('sessionType', '');
+    Storage.clear();
+    Storage.setLocalStorage('viewOnboarding', 'true');
     props.history.push('/');
   };
 
@@ -32,7 +32,7 @@ const AccountDetails = props => {
             <styles.Header>Minha Conta</styles.Header>
 
             <styles.InputText>Nome</styles.InputText>
-            <styles.InputValue>Fulano</styles.InputValue>
+            <styles.InputValue>xxxx</styles.InputValue>
 
             <styles.InputText>Telefone</styles.InputText>
             <styles.InputValue>(51) 9999.9999</styles.InputValue>

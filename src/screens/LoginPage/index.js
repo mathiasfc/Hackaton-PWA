@@ -25,9 +25,7 @@ const LoginPage = props => {
 
   const login = async () => {
     const { location } = props;
-    console.log(location);
     const origin = location.state ? location.state.origin : '';
-    console.log(origin);
 
     if (origin) {
       await props.paylyLogin({ identifier: username, password });
@@ -38,7 +36,12 @@ const LoginPage = props => {
     const sessionToken = Storage.getLocalStorage(`${origin}sessionToken`);
 
     if (sessionToken) {
-      props.history.push('/paytab');
+      if (Storage.getLocalStorage('backToHome') == 'true') {
+        props.history.push('/home');
+      } else {
+        Storage.setLocalStorage('backToHome', 'false');
+        props.history.push('/paytab');
+      }
     }
   };
 

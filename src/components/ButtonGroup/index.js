@@ -19,6 +19,10 @@ const ButtonGroup = ({ cameraAccess, read }) => {
     //pedir para digitar
   }, []);
 
+  const setBackToHome = () => {
+    Storage.setLocalStorage('backToHome', 'true');
+  };
+
   return (
     <styles.Container>
       <styles.ButtonContainer>
@@ -48,6 +52,7 @@ const ButtonGroup = ({ cameraAccess, read }) => {
           to={Storage.getLocalStorage('sessionToken') ? '/account' : '/login'}
           square="true"
           customStyles={styles.buttonStyle}
+          onClick={setBackToHome}
         >
           <ProfileIcon />
           Minha Conta
@@ -58,6 +63,7 @@ const ButtonGroup = ({ cameraAccess, read }) => {
           to={Storage.getLocalStorage('sessionToken') ? '/cards' : '/login'}
           square="true"
           customStyles={styles.buttonStyle}
+          onClick={setBackToHome}
         >
           <CardIcon />
           Meus Cartões

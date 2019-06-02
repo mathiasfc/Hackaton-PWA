@@ -15,6 +15,10 @@ const HomePage = ({ history }) => {
     if (!viewOnboarding) {
       history.push('/onboarding');
     }
+    const backToHome = Storage.getLocalStorage('backToHome');
+    if (backToHome === 'true') {
+      Storage.setLocalStorage('backToHome', 'false');
+    }
   });
 
   return (
