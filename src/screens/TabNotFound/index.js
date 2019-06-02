@@ -18,9 +18,9 @@ const TabNotFound = props => {
       <styles.BackLogo src={backLogo} onClick={() => props.history.push('/home')} alt="backLogo" />
       <styles.FlexColumn>
         <styles.Header>
-          O pagamento não
+          Não foi possível
           <br />
-          pôde ser realizado
+          concluir o pagamento
           <styles.SubHeader>Comanda inválida</styles.SubHeader>
         </styles.Header>
 
