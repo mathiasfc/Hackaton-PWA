@@ -36,10 +36,10 @@ export const getTabDetails = id => {
         console.log('Order Received With Success', response.data);
 
         dispatch(receiveTab(response.data));
+        return response.data;
       }
     } catch (err) {
-      console.log(err);
-
+      dispatch(receiveTab({ error: true }));
       return {
         message:
           'Erro ao recuperar as informações da comanda, verifique os dados e tente novamente',

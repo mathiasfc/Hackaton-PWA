@@ -43,6 +43,9 @@ const Cards = loadable(() => import('./screens/Cards'), {
 const CardForm = loadable(() => import('./screens/CardForm'), {
   fallback: <div>Loading ...</div>,
 });
+const TabNotFound = loadable(() => import('./screens/TabNotFound'), {
+  fallback: <div>Loading ...</div>,
+});
 
 const firstPage = Storage.getLocalStorage('viewOnboarding') ? HomePage : Onboarding;
 
@@ -61,6 +64,7 @@ const Router = () => (
     <Route path="/typetab" component={TypeTab} />
     <Route path="/cards" component={Cards} />
     <Route path="/card" component={CardForm} />
+    <Route path="/tabnotfound" component={TabNotFound} />
   </>
 );
 

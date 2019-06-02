@@ -9,28 +9,44 @@ import { getTabDetails } from '../../store/tab/actions';
 import Storage from '../../helpers/storage';
 
 const TypeTab = props => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [tabNumber, setTabNumber] = useState('');
 
   useEffect(() => {
-    console.log('mount');
-  }, []);
+    // if (props.tab && !props.isLoading) {
+    //   props.history.push('/list');
+    // } else if (props.tab.error) {
+    //   props.history.push('/tabnotfound');
+    // }
+  });
 
-  const login = async () => {
-    await props.login({ identifier: username, password: password });
-    const sessionToken = Storage.getLocalStorage('sessionToken');
-    if (sessionToken) {
-      props.history.push('/paytab');
+  // const login = async () => {
+  //   await props.login({ identifier: username, password: password });
+  //   const sessionToken = Storage.getLocalStorage('sessionToken');
+  //   if (sessionToken) {
+  //     props.history.push('/paytab');
+  //   }
+  // };
+
+  const checkTab = async getTabDetails => {
+    if (tabNumber) {
+      let returned = await getTabDetails(tabNumber);
+      if (returned) {
+        if (returned.message) {
+          props.history.push('/tabnotfound');
+        } else if (returned.id) {
+          props.history.push('/list');
+        }
+      }
     }
   };
 
   const handleTabNumber = e => {
-    setUsername(e.target.value);
+    setTabNumber(e.target.value);
   };
 
   return (
     <styles.Container>
-      <styles.BackLogo src={backLogo} onClick={() => props.history.goBack()} alt="backLogo" />
+      <styles.BackLogo src={backLogo} onClick={() => props.history.push('/home')} alt="backLogo" />
       <styles.FlexColumn>
         <styles.Header>
           Digite o número <br />
@@ -40,10 +56,10 @@ const TypeTab = props => {
         <styles.InputTab type="text" onChange={handleTabNumber} maxLength="20" />
 
         <Button
-          onClick={login}
+          onClick={() => checkTab(props.getTabDetails)}
           rounded
           customStyles={styles.buttonStyle}
-          disabled={props.auth.isLoading}
+          disabled={props.tab.isLoading}
         >
           Próximo
         </Button>
@@ -52,8 +68,9 @@ const TypeTab = props => {
   );
 };
 
-const mapStateToProps = state => ({
-  auth: state.auth,
+const mapStateToProps = ({ tab }) => ({
+  isLoading: tab.isLoading,
+  tab: tab.tab,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({ login, getTabDetails }, dispatch);

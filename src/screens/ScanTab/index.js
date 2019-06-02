@@ -25,8 +25,14 @@ const ScanTab = ({ tab, cancelCameraAccess, activateCamera, history, getTabDetai
   const onScan = async (id, history, getTabDetails) => {
     if (id && !hasReadQR) {
       setHasReadQR(true);
-      await getTabDetails(id);
-      history.push('/list');
+      let returned = await getTabDetails(id);
+      if (returned) {
+        if (returned.message) {
+          history.push('/tabnotfound');
+        } else if (returned.id) {
+          history.push('/list');
+        }
+      }
     }
   };
 
