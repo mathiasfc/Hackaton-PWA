@@ -2,8 +2,8 @@ import axiosInstance from '.';
 import { ID_UNITY } from '../helpers/constants';
 
 export default class {
-  constructor() {
-    this.instance = axiosInstance(process.env.REACT_APP_API_ORDERS);
+  constructor(endpoint = process.env.REACT_APP_API_ORDERS) {
+    this.instance = axiosInstance(endpoint);
   }
 
   getOrderDetails(id) {

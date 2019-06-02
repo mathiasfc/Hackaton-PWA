@@ -81,11 +81,16 @@ class PayTabPage extends Component {
     const { tab, history } = this.props;
     const { cards } = this.state;
     const selectedCard = cards.find(card => card.selected);
-    const OrderService = new Order();
+    const isPayly = selectedCard.cardId === 'payly';
+    const OrderService = new Order(
+      isPayly ? process.env.REACT_APP_API_PAYLY : process.env.REACT_APP_API_ORDERS
+    );
 
     let response;
 
-    if (selectedCard.cardId === 'payly') {
+    console.log(selectedCard);
+
+    if (isPayly) {
       const sessionToken = Storage.getLocalStorage('paylysessionToken');
 
       response = await OrderService.payTab(tab.id, {
