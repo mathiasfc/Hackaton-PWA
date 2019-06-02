@@ -9,7 +9,6 @@ import CardList from '../../components/CardList';
 import { listCards } from '../../store/paymentMethod/actions';
 import Order from '../../service/Order';
 import Storage from '../../helpers/storage';
-import { clearTab } from '../../store/tab/actions';
 
 class PayTabPage extends Component {
   state = {
@@ -56,7 +55,7 @@ class PayTabPage extends Component {
   };
 
   pay = async () => {
-    const { tab, history, dispatch, clearTab } = this.props;
+    const { tab, history, dispatch } = this.props;
     const { cards } = this.state;
     const selectedCard = cards.find(card => card.selected);
     const OrderService = new Order();
@@ -67,8 +66,6 @@ class PayTabPage extends Component {
       cardId: selectedCard.cardId,
       paymentMode: 1,
     });
-
-    dispatch(clearTab());
 
     console.log(response);
 
@@ -131,7 +128,7 @@ const mapStateToProps = ({ paymentMethod, tab }) => ({
   tab: tab.tab,
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators({ listCards, clearTab }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ listCards }, dispatch);
 
 export default withRouter(
   connect(
