@@ -41,7 +41,7 @@ const LoginPage = props => {
         <styles.BackLogo src={backLogo} onClick={() => props.history.goBack()} alt="backLogo" />
         <styles.FlexColumn>
           <div>
-            <styles.Header>Cadastro</styles.Header>
+            <styles.Header>Login</styles.Header>
             {props.auth.loginFailure && (
               <styles.ErrorMsg>Usuário ou senha incorretos</styles.ErrorMsg>
             )}

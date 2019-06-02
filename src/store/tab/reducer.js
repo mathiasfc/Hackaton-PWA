@@ -1,4 +1,10 @@
-import { LOADING_TAB, RECEIVE_TAB, CANCEL_CAMERA_ACCESS, ACTIVATE_CAMERA  } from './actions';
+import {
+  LOADING_TAB,
+  RECEIVE_TAB,
+  CANCEL_CAMERA_ACCESS,
+  ACTIVATE_CAMERA,
+  CLEAR_TAB,
+} from './actions';
 
 const initialState = {
   isLoading: false,
@@ -31,6 +37,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         cameraAccess: true,
+      };
+    }
+    case CLEAR_TAB: {
+      return {
+        ...state,
+        tab: {},
       };
     }
     default:

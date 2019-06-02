@@ -41,7 +41,7 @@ const TabNotFound = loadable(() => import('./screens/TabNotFound'), {
   fallback: <div>Loading ...</div>,
 });
 
-let firstPage = Storage.getLocalStorage('viewOnboarding') ? HomePage : Onboarding;
+const firstPage = Storage.getLocalStorage('viewOnboarding') ? HomePage : Onboarding;
 
 const Router = () => (
   <>
