@@ -2,6 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import loadable from '@loadable/component';
 import withNetworkListener from './containers/NetworkListener';
+import Storage from './helpers/storage';
 /* import Home from './screens/App';
 import List from './screens/List'; */
 
@@ -34,9 +35,12 @@ const AccountDetails = loadable(() => import('./screens/AccountDetails'), {
   fallback: <div>Loading ...</div>,
 });
 
+let firstPage = Storage.getLocalStorage('viewOnboarding') ? HomePage : Onboarding;
+
 const Router = () => (
   <>
-    <Route path="/" exact component={HomePage} />
+    <Route path="/" exact component={firstPage} />
+    <Route path="/home" exact component={HomePage} />
     <Route path="/list" component={List} />
     <Route path="/scan" component={ScanTab} />
     <Route path="/onboarding" component={Onboarding} />
