@@ -5,6 +5,7 @@ import QRCodeIcon from '../Icons/QRCode';
 import ProfileIcon from '../Icons/Profile';
 import CardIcon from '../Icons/Card';
 import QuestionIcon from '../Icons/Question';
+import Storage from '../../helpers/storage';
 
 const ButtonGroup = ({ read }) => (
   <styles.Container>
@@ -23,14 +24,22 @@ const ButtonGroup = ({ read }) => (
     </styles.ButtonContainer>
 
     <styles.ButtonContainer>
-      <Button to="/" square="true" customStyles={styles.buttonStyle}>
+      <Button
+        to={Storage.getLocalStorage('sessionToken') ? '/account' : '/login'}
+        square="true"
+        customStyles={styles.buttonStyle}
+      >
         <ProfileIcon />
         Minha Conta
       </Button>
     </styles.ButtonContainer>
 
     <styles.ButtonContainer>
-      <Button to="/" square="true" customStyles={styles.buttonStyle}>
+      <Button
+        to={Storage.getLocalStorage('sessionToken') ? '/' : '/login'}
+        square="true"
+        customStyles={styles.buttonStyle}
+      >
         <CardIcon />
         Meus Cartões
       </Button>
