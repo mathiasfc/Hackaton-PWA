@@ -28,9 +28,6 @@ export const ScannerWrapper = styled.div`
     position: absolute;
     top: -15px;
     left: -15px;
-    /* border-top: 3px solid #fff;
-    border-left: 3px solid #fff;
-    border-radius: 8px 0px; */
   }
   &::after {
     display: block;
@@ -40,9 +37,6 @@ export const ScannerWrapper = styled.div`
     position: absolute;
     top: -15px;
     right: -15px;
-    /* border-top: 3px solid #fff;
-    border-right: 3px solid #fff;
-    border-radius: 0px 8px; */
   }
 `;
 
@@ -62,9 +56,6 @@ export const BorderBottom = styled.span`
     position: absolute;
     bottom: -15px;
     left: -15px;
-    /* border-bottom: 3px solid #fff;
-    border-left: 3px solid #fff;
-    border-radius: 0px 8px; */
   }
 
   &::after {
@@ -75,9 +66,6 @@ export const BorderBottom = styled.span`
     position: absolute;
     bottom: -15px;
     right: -15px;
-    /* border-bottom: 3px solid #fff;
-    border-right: 3px solid #fff;
-    border-radius: 8px 0px; */
   }
 `;
 
@@ -135,21 +123,9 @@ export const Overlay = styled.div`
 `;
 
 export const ScanArea = styled.div`
-  /* background-color: rgba(255, 255, 255, 0.1); */
-  /* border-radius: 5px; */
   width: 100%;
   height: 200px;
 
-  &:before {
-    /* content: '';
-    border: 0.5px solid #d34848;
-    position: absolute;
-    left: -2%;
-    right: -2%;
-    -webkit-animation: MoveUpDown 1s linear infinite;
-    box-sizing: border-box;
-    animation: MoveUpDown 4s linear infinite; */
-  }
 
   @keyframes MoveUpDown {
     0%,

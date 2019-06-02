@@ -9,7 +9,6 @@ import Button from '../../components/Button';
 import Storage from '../../helpers/storage';
 
 const Onboarding = ({ history }) => {
-  // const [selected, setSelected] = useState(0);
 
   useEffect(() => {
     const viewOnboarding = Storage.getLocalStorage('viewOnboarding');

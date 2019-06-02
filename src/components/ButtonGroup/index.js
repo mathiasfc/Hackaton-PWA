@@ -12,11 +12,6 @@ import Storage from '../../helpers/storage';
 const ButtonGroup = ({ cameraAccess, read }) => {
   useEffect(() => {
     console.log(cameraAccess);
-    // if(!props.voucher.cameraAccess) {
-    //   props.show();
-    // }
-    //se não tiver permissão para acessar a camera
-    //pedir para digitar
   }, []);
 
   const setBackToHome = () => {
