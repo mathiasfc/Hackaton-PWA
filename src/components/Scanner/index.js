@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-// import IconScan from '../Icons/Scan';
 import * as styles from './style';
-// import Navbar from '../Navbar';
-// import Header from '../Header';
+import Header from '../Header';
+import Button from '../../components/Button';
+import BackIcon from '../../components/Icons/Back';
 
-const ScannerComponent = ({ onScan, activateCamera }) => {
+const ScannerComponent = ({ history, onScan, activateCamera }) => {
   const onError = err => {
     // if(props.cameraAccess) {
     //   props.history.push('/digit_code');
@@ -17,13 +17,13 @@ const ScannerComponent = ({ onScan, activateCamera }) => {
   return (
     <div>
       <styles.Container>
+        <BackIcon
+          onClick={() => history.goBack()}
+          color="white"
+          customStyles={styles.backButtonStyle}
+        />
+        <Header title="Posicione o QR code no centro" description="para pagar sua comanda" />
         <styles.Content>
-          {/* <Header
-            title="Scan Voucher"
-            description="Escaneie o voucher para utilizá-lo."
-            IconScreen={IconScan}
-          />
-          <Navbar /> */}
           <styles.ScannerContainer>
             <styles.ScannerWrapper>
               <styles.ScanArea />
@@ -37,6 +37,13 @@ const ScannerComponent = ({ onScan, activateCamera }) => {
           onError={onError}
           onLoad={() => activateCamera}
         />
+        <Button
+          onClick={() => history.push('/typetab')}
+          rounded
+          customStyles={styles.buttonStyle}
+        >
+          Digitar comanda
+        </Button>
       </styles.Container>
       <styles.Overlay />
     </div>

@@ -6,7 +6,7 @@ const Svg = styled.svg`
   ${({ customStyles }) => customStyles}
 `;
 
-const BackIcon = ({ color, className, customStyles }) => (
+const BackIcon = ({ onClick, color, className, customStyles }) => (
   <Svg
     className={className}
     xmlns="http://www.w3.org/2000/svg"
@@ -14,6 +14,7 @@ const BackIcon = ({ color, className, customStyles }) => (
     height="18"
     viewBox="0 0 10 18"
     customStyles={customStyles}
+    onClick={onClick}
   >
     <path
       fill={color}
@@ -27,12 +28,14 @@ BackIcon.propTypes = {
   color: PropTypes.string,
   className: PropTypes.string,
   customStyles: PropTypes.object,
+  onClick: PropTypes.func,
 };
 
 BackIcon.defaultProps = {
   color: '#333',
   className: '',
   customStyles: {},
+  onClick: null,
 };
 
 export default BackIcon;
