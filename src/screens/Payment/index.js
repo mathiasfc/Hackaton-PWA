@@ -14,7 +14,7 @@ const Payment = ({ history, location }) => (
     <styles.Content>
       <styles.PaymentData>
         <styles.PaymentTitle>Valor Pago</styles.PaymentTitle>
-        <styles.PaymentValue>{location.state.total}</styles.PaymentValue>
+        <styles.PaymentValue>{location.state && location.state.total}</styles.PaymentValue>
       </styles.PaymentData>
 
       <styles.CommentContainer>

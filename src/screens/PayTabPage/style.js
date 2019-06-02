@@ -9,14 +9,19 @@ export const Container = styled.div`
   flex-direction: column;
 `;
 
-export const Content = styled.div``;
+export const Content = styled.div`
+  height: calc(100vh - 281px);
+  overflow-y: auto;
+`;
 
 export const BackLogo = styled.img`
   margin-top: 20px;
   cursor: pointer;
 `;
 
-export const Header = styled.div``;
+export const Header = styled.div`
+  margin-bottom: 20px;
+`;
 
 export const HeaderTitle = styled.h2`
   color: #000000;
@@ -80,4 +85,6 @@ export const buttonStyle = css`
   width: 100%;
 `;
 
-export const Footer = styled.div``;
+export const Footer = styled.div`
+  margin-top: 20px;
+`;

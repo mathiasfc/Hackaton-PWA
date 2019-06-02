@@ -89,7 +89,7 @@ class PayTabPage extends Component {
           <BackIcon onClick={() => history.push('/list')} />
 
           <styles.HeaderTitle>Pagamento</styles.HeaderTitle>
-          <styles.SubHeaderDate>1 jun 2019</styles.SubHeaderDate>
+          <styles.SubHeaderDate>2 jun 2019</styles.SubHeaderDate>
 
           <styles.TabInfo>
             <styles.TabInfoNumber>
