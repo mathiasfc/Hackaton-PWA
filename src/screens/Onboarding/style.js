@@ -9,22 +9,23 @@ export const fullPage = styled.div`
 `;
 
 export const innerText = styled.span`
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   width: 80%;
   text-align: center;
+  margin-top: -15%;
 `;
 
 export const dots = styled.div`
   position: absolute;
   width: 100%;
   height: auto;
-  bottom: 20%;
+  bottom: 15%;
   text-align: center;
 `;
 
 export const dot = styled.span`
-  background: #dcdcdc;
+  background: #ececec;
   border-radius: 10px;
   width: 8px;
   height: 8px;
@@ -42,13 +43,13 @@ export const centeredButton = styled.div`
   position: absolute;
   width: 100%;
   height: auto;
-  bottom: 7%;
+  bottom: 10px;
   display: flex;
   justify-content: center;
 `;
 
 export const buttonStyle = css`
   height: 50px;
-  width: 200px;
+  width: 85%;
   font-weight: bold;
 `;
