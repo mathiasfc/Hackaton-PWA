@@ -37,6 +37,12 @@ const AccountDetails = loadable(() => import('./screens/AccountDetails'), {
 const TypeTab = loadable(() => import('./screens/TypeTab'), {
   fallback: <div>Loading ...</div>,
 });
+const Cards = loadable(() => import('./screens/Cards'), {
+  fallback: <div>Loading ...</div>,
+});
+const CardForm = loadable(() => import('./screens/CardForm'), {
+  fallback: <div>Loading ...</div>,
+});
 
 const firstPage = Storage.getLocalStorage('viewOnboarding') ? HomePage : Onboarding;
 
@@ -53,6 +59,8 @@ const Router = () => (
     <Route path="/payment" component={Payment} />
     <Route path="/account" component={AccountDetails} />
     <Route path="/typetab" component={TypeTab} />
+    <Route path="/cards" component={Cards} />
+    <Route path="/card" component={CardForm} />
   </>
 );
 

@@ -38,5 +38,17 @@ export const Button = styled(Link)`
       color: #fff;
     `}
 
+  ${({ text }) =>
+    text &&
+    css`
+      background-color: transparent;
+      box-shadow: none;
+      color: #4ea547;
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 15px;
+      padding: 2.5px 0;
+    `}
+
   ${({ customStyles }) => customStyles}
 `;

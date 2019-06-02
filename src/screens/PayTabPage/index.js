@@ -56,7 +56,7 @@ class PayTabPage extends Component {
   };
 
   pay = async () => {
-    const { tab, history, dispatch } = this.props;
+    const { tab, history, dispatch, clearTab } = this.props;
     const { cards } = this.state;
     const selectedCard = cards.find(card => card.selected);
     const OrderService = new Order();
@@ -131,7 +131,7 @@ const mapStateToProps = ({ paymentMethod, tab }) => ({
   tab: tab.tab,
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators({ listCards }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ listCards, clearTab }, dispatch);
 
 export default withRouter(
   connect(

@@ -40,7 +40,7 @@ const ButtonGroup = ({ read }) => (
 
     <styles.ButtonContainer>
       <Button
-        to={Storage.getLocalStorage('sessionToken') ? '/' : '/login'}
+        to={Storage.getLocalStorage('sessionToken') ? '/cards' : '/login'}
         square="true"
         customStyles={styles.buttonStyle}
       >

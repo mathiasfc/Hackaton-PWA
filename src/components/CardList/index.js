@@ -2,7 +2,7 @@ import React from 'react';
 import * as styles from './style';
 import PlusIcon from '../Icons/Plus';
 
-const CardList = ({ cards, onClick }) => {
+const CardList = ({ cards, onClick, selectable, add, asideContent }) => {
   return (
     <styles.Container>
       {cards &&
@@ -15,18 +15,27 @@ const CardList = ({ cards, onClick }) => {
               <styles.CardNumber>{card.lastDigits}</styles.CardNumber>
             </styles.CardInfo>
 
-            <styles.Circle selected={card.selected} />
+            {selectable && <styles.Circle selected={card.selected} />}
+            {asideContent}
           </styles.CardItem>
         ))}
 
-      <styles.CardItem>
-        <styles.ButtonText>
-          <PlusIcon />
-          adicionar cartão
-        </styles.ButtonText>
-      </styles.CardItem>
+      {add && (
+        <styles.CardItem>
+          <styles.ButtonText>
+            <PlusIcon />
+            adicionar cartão
+          </styles.ButtonText>
+        </styles.CardItem>
+      )}
     </styles.Container>
   );
+};
+
+CardList.defaultProps = {
+  selectable: true,
+  add: true,
+  asideContent: null,
 };
 
 export default CardList;
