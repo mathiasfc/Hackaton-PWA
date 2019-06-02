@@ -30,7 +30,6 @@ const TypeTab = props => {
   const checkTab = async getTabDetails => {
     if (tabNumber) {
       let returned = await getTabDetails(tabNumber);
-      debugger;
       if (returned) {
         if (returned.message) {
           props.history.push('/tabnotfound');
