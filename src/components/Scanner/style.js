@@ -171,10 +171,11 @@ export const buttonStyle = css`
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 10%;
+  bottom: 5%;
   margin-left: auto;
   margin-right: auto;
   width: 67%;
+  cursor: pointer;
 `;
 
 export const backButtonStyle = css`
