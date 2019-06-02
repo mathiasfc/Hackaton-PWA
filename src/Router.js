@@ -23,7 +23,14 @@ const Register = loadable(() => import('./screens/Register'), {
 const PayTabPage = loadable(() => import('./screens/PayTabPage'), {
   fallback: <div>Loading ...</div>,
 });
+const LoginPage = loadable(() => import('./screens/LoginPage'), {
+  fallback: <div>Loading ...</div>,
+});
+
 const Payment = loadable(() => import('./screens/Payment'), {
+  fallback: <div>Loading ...</div>,
+});
+const AccountDetails = loadable(() => import('./screens/AccountDetails'), {
   fallback: <div>Loading ...</div>,
 });
 
@@ -35,7 +42,9 @@ const Router = () => (
     <Route path="/onboarding" component={Onboarding} />
     <Route path="/register" component={Register} />
     <Route path="/paytab" component={PayTabPage} />
+    <Route path="/login" component={LoginPage} />
     <Route path="/payment" component={Payment} />
+    <Route path="/account" component={AccountDetails} />
   </>
 );
 

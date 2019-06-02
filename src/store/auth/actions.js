@@ -16,7 +16,7 @@ export const loadingLogin = () => ({
   type: LOADING_LOGIN,
 });
 
-export function login(data) {
+export function login(data,setUsername,setPass) {
   return async dispatch => {
     dispatch(loadingLogin());
     const AuthService = new Auth();
@@ -39,6 +39,7 @@ export function login(data) {
       }
     } catch (err) {
       console.log(err);
+      dispatch(loginFailure());
       return {
         message: 'Erro ao realizar o login, verifique os dados e tente novamente',
       };
