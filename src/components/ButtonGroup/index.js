@@ -18,7 +18,7 @@ const ButtonGroup = ({ cameraAccess, read }) => {
     //se não tiver permissão para acessar a camera
     //pedir para digitar
   }, []);
-  
+
   return (
     <styles.Container>
       <styles.ButtonContainer>
@@ -32,7 +32,11 @@ const ButtonGroup = ({ cameraAccess, read }) => {
             Leia sua Comanda
           </Button>
         ) : (
-          <Button to="/paytab" square="true" customStyles={styles.buttonStyle}>
+          <Button
+            to={Storage.getLocalStorage('sessionToken') ? '/paytab' : '/login'}
+            square="true"
+            customStyles={styles.buttonStyle}
+          >
             <QRCodeIcon />
             Pagar a Comanda
           </Button>
