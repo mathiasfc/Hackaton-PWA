@@ -14,12 +14,6 @@ const ScanTab = ({ tab, cancelCameraAccess, activateCamera, history, getTabDetai
   const [hasReadQR, setHasReadQR] = useState(false);
 
   useEffect(() => {
-    console.log('scan tab didmount');
-    // if(!props.voucher.cameraAccess) {
-    //   props.show();
-    // }
-    //se não tiver premissão para acessar a camera
-    //pedir para digitar
   }, []);
 
   const onScan = async (id, history, getTabDetails) => {

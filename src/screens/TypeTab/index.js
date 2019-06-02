@@ -12,20 +12,7 @@ const TypeTab = props => {
   const [tabNumber, setTabNumber] = useState('');
 
   useEffect(() => {
-    // if (props.tab && !props.isLoading) {
-    //   props.history.push('/list');
-    // } else if (props.tab.error) {
-    //   props.history.push('/tabnotfound');
-    // }
   });
-
-  // const login = async () => {
-  //   await props.login({ identifier: username, password: password });
-  //   const sessionToken = Storage.getLocalStorage('sessionToken');
-  //   if (sessionToken) {
-  //     props.history.push('/paytab');
-  //   }
-  // };
 
   const checkTab = async getTabDetails => {
     if (tabNumber) {
