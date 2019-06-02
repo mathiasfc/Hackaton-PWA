@@ -9,7 +9,6 @@ import CardList from '../../components/CardList';
 import { listCards } from '../../store/paymentMethod/actions';
 import Order from '../../service/Order';
 import Storage from '../../helpers/storage';
-import { clearTab } from '../../store/tab/actions';
 import { formatReal } from '../../helpers/index';
 
 class PayTabPage extends Component {
@@ -60,7 +59,7 @@ class PayTabPage extends Component {
   };
 
   pay = async () => {
-    const { tab, history, dispatch, clearTab } = this.props;
+    const { tab, history, dispatch } = this.props;
     const { cards } = this.state;
     const selectedCard = cards.find(card => card.selected);
     const OrderService = new Order();
@@ -71,8 +70,6 @@ class PayTabPage extends Component {
       cardId: selectedCard.cardId,
       paymentMode: 1,
     });
-
-    dispatch(clearTab());
 
     console.log(response);
 
@@ -93,7 +90,7 @@ class PayTabPage extends Component {
           <BackIcon onClick={() => history.push('/list')} />
 
           <styles.HeaderTitle>Pagamento</styles.HeaderTitle>
-          <styles.SubHeaderDate>1 jun 2019</styles.SubHeaderDate>
+          <styles.SubHeaderDate>2 jun 2019</styles.SubHeaderDate>
 
           <styles.TabInfo>
             <styles.TabInfoNumber>
@@ -135,7 +132,7 @@ const mapStateToProps = ({ paymentMethod, tab }) => ({
   tab: tab.tab,
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators({ listCards, clearTab }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ listCards }, dispatch);
 
 export default withRouter(
   connect(
