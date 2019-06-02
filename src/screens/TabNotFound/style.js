@@ -23,6 +23,7 @@ export const Header = styled.span`
   font-weight: bold;
   margin-top: 40px;
   display: block;
+  color: #c10101;
 `;
 
 export const buttonStyle = css`
@@ -64,4 +65,12 @@ export const InputTab = styled.input`
   margin-top: -130px;
   font-size: 30px;
   text-align: center;
+`;
+
+export const SubHeader = styled.span`
+  color: #9a9a9a;
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px;
 `;

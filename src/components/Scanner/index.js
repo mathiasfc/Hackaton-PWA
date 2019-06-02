@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import * as styles from './style';
@@ -6,13 +6,21 @@ import Header from '../Header';
 import Button from '../../components/Button';
 import BackIcon from '../../components/Icons/Back';
 
-const ScannerComponent = ({ history, onScan, activateCamera }) => {
-  const onError = err => {
-    // if(props.cameraAccess) {
-    //   props.history.push('/digit_code');
-    //   props.cancelCameraAccess();
+const ScannerComponent = ({ cancelCameraAccess, history, onScan, activateCamera }) => {
+  useEffect(() => {
+    // console.log(cameraAccess);
+    // if(!props.voucher.cameraAccess) {
+    //   props.show();
     // }
-    console.log(err);
+    //se não tiver premissão para acessar a camera
+    //pedir para digitar
+  }, []);
+
+  const onError = err => {
+    cancelCameraAccess();
+    console.log('cancelou');
+    history.push('/typetab');
+    //console.log(err);
   };
 
   return (
