@@ -8,7 +8,7 @@ export const Button = styled(Link)`
   font-size: 16px;
   font-weight: 700;
   justify-content: center;
-  padding: 15px;
+  padding: 15px 25px 15px;
   text-align: center;
   text-decoration: none;
 
