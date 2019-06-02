@@ -28,6 +28,7 @@ export const CardBrand = styled.div`
   height: 28px;
   justify-content: center;
   margin-right: 10px;
+  overflow: hidden;
   width: 40px;
 `;
 
@@ -54,9 +55,15 @@ export const Circle = styled.div`
     `}
 `;
 
-export const ButtonText = styled.div`
+export const ButtonText = styled.span`
+  align-items: center;
   color: #000000;
+  display: flex;
   font-size: 14px;
   font-weight: 600;
   line-height: 19px;
+
+  > svg {
+    margin-right: 8px;
+  }
 `;
