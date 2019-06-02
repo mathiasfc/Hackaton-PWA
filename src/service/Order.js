@@ -18,4 +18,16 @@ export default class {
 
     return this.instance(request);
   }
+
+  payTab(id, data) {
+    const request = {
+      method: 'POST',
+      url: `/${id}/payments`,
+      data: {
+        customerInfo: data,
+      },
+    };
+
+    return this.instance(request);
+  }
 }

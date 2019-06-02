@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { container } from '../../styles/mixins';
 import QrReader from 'react-qr-reader';
 
@@ -28,9 +28,9 @@ export const ScannerWrapper = styled.div`
     position: absolute;
     top: -15px;
     left: -15px;
-    border-top: 3px solid #fff;
+    /* border-top: 3px solid #fff;
     border-left: 3px solid #fff;
-    border-radius: 8px 0px;
+    border-radius: 8px 0px; */
   }
   &::after {
     display: block;
@@ -40,9 +40,9 @@ export const ScannerWrapper = styled.div`
     position: absolute;
     top: -15px;
     right: -15px;
-    border-top: 3px solid #fff;
+    /* border-top: 3px solid #fff;
     border-right: 3px solid #fff;
-    border-radius: 0px 8px;
+    border-radius: 0px 8px; */
   }
 `;
 
@@ -62,9 +62,9 @@ export const BorderBottom = styled.span`
     position: absolute;
     bottom: -15px;
     left: -15px;
-    border-bottom: 3px solid #fff;
+    /* border-bottom: 3px solid #fff;
     border-left: 3px solid #fff;
-    border-radius: 0px 8px;
+    border-radius: 0px 8px; */
   }
 
   &::after {
@@ -75,9 +75,9 @@ export const BorderBottom = styled.span`
     position: absolute;
     bottom: -15px;
     right: -15px;
-    border-bottom: 3px solid #fff;
+    /* border-bottom: 3px solid #fff;
     border-right: 3px solid #fff;
-    border-radius: 8px 0px;
+    border-radius: 8px 0px; */
   }
 `;
 
@@ -89,7 +89,8 @@ export const StyledQrReader = styled(QrReader)`
     right: 0;
     width: 100% !important;
     padding-top: 0 !important;
-    height: calc(100vh - 60px);
+    /* height: calc(100vh - 60px); */
+    height: 100vh;
     > div {
       border: none !important;
       box-shadow: unset !important;
@@ -98,13 +99,17 @@ export const StyledQrReader = styled(QrReader)`
 `;
 
 export const Content = styled.div`
-  margin-top: 25%;
-  position: absolute;
   z-index: 10;
-  width: 100%;
   max-width: 800px;
   padding: 0px 5px;
   box-sizing: border-box;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  height: 18em;
+  margin-top: -9em;
+  margin-left: -40%;
 `;
 
 export const Overlay = styled.div`
@@ -114,23 +119,36 @@ export const Overlay = styled.div`
   top: 0;
   left: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
+  clip-path: polygon(
+    0% 0%,
+    0 100%,
+    17% 100%,
+    16% 34%,
+    84% 34%,
+    84% 76%,
+    16% 76%,
+    13% 100%,
+    100% 100%,
+    100% 0%
+  );
 `;
 
 export const ScanArea = styled.div`
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 5px;
+  /* background-color: rgba(255, 255, 255, 0.1); */
+  /* border-radius: 5px; */
   width: 100%;
   height: 200px;
+
   &:before {
-    content: '';
+    /* content: '';
     border: 0.5px solid #d34848;
     position: absolute;
     left: -2%;
     right: -2%;
     -webkit-animation: MoveUpDown 1s linear infinite;
     box-sizing: border-box;
-    animation: MoveUpDown 4s linear infinite;
+    animation: MoveUpDown 4s linear infinite; */
   }
 
   @keyframes MoveUpDown {
@@ -142,4 +160,27 @@ export const ScanArea = styled.div`
       top: 100%;
     }
   }
+`;
+
+export const buttonStyle = css`
+  background: transparent;
+  color: black;
+  border: 1px solid #bbbbbb;
+  color: white;
+  z-index: 10;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 67%;
+`;
+
+export const backButtonStyle = css`
+  margin-top: 20px;
+  cursor: pointer;
+  z-index: 10;
+  position: absolute;
+  margin-left: 10%;
 `;

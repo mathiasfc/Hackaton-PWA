@@ -6,11 +6,11 @@ import Button from '../../components/Button';
 import BackIcon from '../../components/Icons/Back';
 import CardList from '../../components/CardList';
 import { listCards } from '../../store/paymentMethod/actions';
+import Order from '../../service/Order';
 
 class PayTabPage extends Component {
   state = {
     cards: [],
-    paytab: '',
   };
 
   async componentDidMount() {
@@ -19,20 +19,9 @@ class PayTabPage extends Component {
     listCards();
   }
 
-  componentDidUpdate() {
-    const { cards } = this.props;
-
-    this.setState({
-      cards: cards.map(card => ({
-        ...card,
-        selected: false,
-      })),
-    });
-  }
-
   shouldComponentUpdate(nextProps, nextState) {
     if (
-      nextState.cards.length !== this.state.cards.length ||
+      JSON.stringify(nextState.cards) !== JSON.stringify(this.state.cards) ||
       nextProps.cards !== this.props.cards
     ) {
       return true;
@@ -41,21 +30,43 @@ class PayTabPage extends Component {
     return false;
   }
 
-  // const payTab = () => {
-  //   console.log('pagar comanda');
-  // };
+  componentDidUpdate() {
+    const { cards } = this.props;
+
+    if (!this.state.cards.length) {
+      this.setState({
+        cards: cards.map(card => ({
+          ...card,
+          selected: card.selected || false,
+        })),
+      });
+    }
+  }
 
   onClick = id => {
     this.setState(prevProps => ({
       cards: prevProps.cards.map(cards => ({
         ...cards,
-        selected: cards.id === id,
+        selected: cards.cardId === id,
       })),
     }));
   };
 
+  pay = paymentMode => {
+    const { tabId } = this.props;
+    const { cards } = this.state;
+    const selectedCard = cards.find(card => card.selected);
+    const OrderService = new Order();
+
+    OrderService.payTab(tabId, {
+      cardId: selectedCard.cardId,
+      paymentMode,
+    });
+  };
+
   render() {
     const { cards } = this.state;
+    const hasSelected = cards.filter(card => card.selected).length > 0;
 
     return (
       <styles.Container>
@@ -85,7 +96,13 @@ class PayTabPage extends Component {
         </styles.Content>
 
         <styles.Footer>
-          <Button onClick={this.state.payTab} rounded customStyles={styles.buttonStyle}>
+          <Button
+            as="button"
+            disabled={!hasSelected}
+            rounded
+            customStyles={styles.buttonStyle}
+            onClick={this.pay}
+          >
             Pagar Comanda
           </Button>
         </styles.Footer>
@@ -94,8 +111,9 @@ class PayTabPage extends Component {
   }
 }
 
-const mapStateToProps = ({ paymentMethod }) => ({
+const mapStateToProps = ({ paymentMethod, tab }) => ({
   cards: paymentMethod.cards,
+  tabId: tab.tab.id,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({ listCards }, dispatch);

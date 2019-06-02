@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 export const Button = styled(Link)`
   align-items: center;
+  border: none;
   box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.1);
   display: flex;
   font-size: 16px;
@@ -11,6 +12,10 @@ export const Button = styled(Link)`
   padding: 15px 25px 15px;
   text-align: center;
   text-decoration: none;
+
+  &:disabled {
+    background-color: #CCC;
+  }
 
   ${({ square }) =>
     square &&
