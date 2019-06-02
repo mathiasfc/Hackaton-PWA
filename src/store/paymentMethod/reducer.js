@@ -8,6 +8,7 @@ import {
 
 const initialState = {
   isLoading: false,
+  cards: [],
 };
 
 export default function(state = initialState, action) {
@@ -36,6 +37,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         isLoading: false,
+        cards: action.cards,
       };
     default:
       return state;
