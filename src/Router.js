@@ -27,6 +27,10 @@ const LoginPage = loadable(() => import('./screens/LoginPage'), {
   fallback: <div>Loading ...</div>,
 });
 
+const Payment = loadable(() => import('./screens/Payment'), {
+  fallback: <div>Loading ...</div>,
+});
+
 const Router = () => (
   <>
     <Route path="/" exact component={HomePage} />
@@ -36,6 +40,7 @@ const Router = () => (
     <Route path="/register" component={Register} />
     <Route path="/paytab" component={PayTabPage} />
     <Route path="/login" component={LoginPage} />
+    <Route path="/payment" component={Payment} />
   </>
 );
 
