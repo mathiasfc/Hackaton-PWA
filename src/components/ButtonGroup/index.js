@@ -16,7 +16,11 @@ const ButtonGroup = ({ read }) => (
           Leia sua Comanda
         </Button>
       ) : (
-        <Button to="/paytab" square="true" customStyles={styles.buttonStyle}>
+        <Button
+          to={Storage.getLocalStorage('sessionToken') ? '/paytab' : '/login'}
+          square="true"
+          customStyles={styles.buttonStyle}
+        >
           <QRCodeIcon />
           Pagar a Comanda
         </Button>

@@ -4,7 +4,7 @@ import * as styles from './style';
 import Button from '../../components/Button';
 import BackIcon from '../../components/Icons/Back';
 
-const Payment = ({ history }) => (
+const Payment = ({ history, location }) => (
   <styles.Container>
     <styles.Header>
       <BackIcon onClick={() => history.push('/')} />
@@ -14,7 +14,7 @@ const Payment = ({ history }) => (
     <styles.Content>
       <styles.PaymentData>
         <styles.PaymentTitle>Valor Pago</styles.PaymentTitle>
-        <styles.PaymentValue>R$ 25,00</styles.PaymentValue>
+        <styles.PaymentValue>{location.state.total}</styles.PaymentValue>
       </styles.PaymentData>
 
       <styles.CommentContainer>

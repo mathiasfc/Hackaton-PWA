@@ -9,6 +9,7 @@ import CardList from '../../components/CardList';
 import { listCards } from '../../store/paymentMethod/actions';
 import Order from '../../service/Order';
 import Storage from '../../helpers/storage';
+import { clearTab } from '../../store/tab/actions';
 
 class PayTabPage extends Component {
   state = {
@@ -55,21 +56,26 @@ class PayTabPage extends Component {
   };
 
   pay = async () => {
-    const { tab, history } = this.props;
+    const { tab, history, dispatch } = this.props;
     const { cards } = this.state;
     const selectedCard = cards.find(card => card.selected);
     const OrderService = new Order();
     const sessionToken = Storage.getLocalStorage('sessionToken');
 
-    const response = await OrderService.payTab(tab.tab.id, {
+    const response = await OrderService.payTab(tab.id, {
       sessionToken,
       cardId: selectedCard.cardId,
       paymentMode: 1,
     });
 
+    dispatch(clearTab());
+
     console.log(response);
 
-    history.push('/payment');
+    history.push({
+      pathname: '/payment',
+      state: { total: tab.total },
+    });
   };
 
   render() {
@@ -122,7 +128,7 @@ class PayTabPage extends Component {
 
 const mapStateToProps = ({ paymentMethod, tab }) => ({
   cards: paymentMethod.cards,
-  tab,
+  tab: tab.tab,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({ listCards }, dispatch);
