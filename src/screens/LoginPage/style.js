@@ -23,7 +23,7 @@ export const Header = styled.span`
   font-weight: bold;
   margin-top: 20px;
   display: block;
-  margin-bottom: 50px;
+  margin-bottom: 5px;
 `;
 
 export const buttonStyle = css`
@@ -41,6 +41,17 @@ export const InputText = styled.span`
   display: block;
   font-size: 14px;
   font-weight: bold;
+  ${({ removeMargin }) =>
+    removeMargin &&
+    css`
+      margin-top: 10px;
+    `}
+`;
+
+export const ErrorMsg = styled.span`
+  color: red;
+  font-weight: bold;
+  font-size: 14px;
 `;
 
 export const InputName = styled.input`

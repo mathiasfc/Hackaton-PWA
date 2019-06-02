@@ -16,7 +16,7 @@ export const loadingLogin = () => ({
   type: LOADING_LOGIN,
 });
 
-export function login(data,setUsername,setPass) {
+export function login(data) {
   return async dispatch => {
     dispatch(loadingLogin());
     const AuthService = new Auth();

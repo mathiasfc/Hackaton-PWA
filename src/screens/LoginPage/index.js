@@ -13,19 +13,18 @@ const LoginPage = props => {
   const [password, setPassword] = useState('');
 
   useEffect(() => {
-    console.log('mounted');
-
-    // Storage.setLocalStorage('sessionToken', sessionToken);
-    // Storage.setLocalStorage('sessionType', 'ACCOUNT');
     const sessionToken = Storage.getLocalStorage('sessionToken');
     if (sessionToken) {
-      //props.history.push('/paytab');
+      props.history.push('/paytab');
     }
   });
 
-  const login = () => {
-    props.login({ identifier: 'vinicius.flores@4all.com', password: '$enh@4all' });
-    // props.login({ identifier: username, password: password });
+  const login = async () => {
+    await props.login({ identifier: username, password: password });
+    const sessionToken = Storage.getLocalStorage('sessionToken');
+    if (sessionToken) {
+      props.history.push('/paytab');
+    }
   };
 
   const handleUsername = e => {
@@ -43,8 +42,11 @@ const LoginPage = props => {
         <styles.FlexColumn>
           <div>
             <styles.Header>Cadastro</styles.Header>
+            {props.auth.loginFailure && (
+              <styles.ErrorMsg>Usuário ou senha incorretos</styles.ErrorMsg>
+            )}
 
-            <styles.InputText>Usuário</styles.InputText>
+            <styles.InputText removeMargin={props.auth.loginFailure}>Usuário</styles.InputText>
             <styles.InputName
               type="text"
               onChange={handleUsername}
@@ -58,9 +60,6 @@ const LoginPage = props => {
               disabled={props.auth.isLoading}
             />
           </div>
-
-          {/* TODO LOGIN FOR ALL GIF */}
-
           <Button
             onClick={login}
             rounded
