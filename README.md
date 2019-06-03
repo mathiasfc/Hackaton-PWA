@@ -1,6 +1,6 @@
-Comanda Easy
+## Comanda Easy
 
-PWA para pagamento de comanda via leitura de QRCode
+Solução em PWA para pagamento de comanda via leitura de QRCode.
 
 [PDF de apresentação da solução](https://drive.google.com/file/d/17AHpwIWYGSyCI3szueZWPJNQNKcSQbN-/view?usp=sharing)
 
